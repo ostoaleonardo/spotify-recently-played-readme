@@ -55,7 +55,7 @@ const formatRecentlySong = (song) => {
 
     const track = song.items[0].track;
 
-    const image = track.album.images[0]?.url || '';
+    const image = track.album.images[1]?.url || track.album.images[0]?.url;
     const artist = track.artists.map((_artist) => _artist.name).join(', ');
     const title = track.name || '';
     const url = track.external_urls.spotify || '';
