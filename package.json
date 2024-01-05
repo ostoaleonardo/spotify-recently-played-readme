@@ -1,15 +1,24 @@
 {
   "name": "spotify-recently-played-readme",
   "version": "1.0.0",
-  "description": "",
+  "description": "Spotify badge for your README.md GitHub profile",
   "main": "index.js",
   "scripts": {
     "start": "node ./api/index.js",
     "nodemon": "nodemon ./api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ostoaleonardo/spotify-recently-played-readme.git"
+  },
+  "keywords": [
+    "spotify badge",
+    "badge markdown",
+    "github readme",
+    "spotify web api"
+  ],
+  "author": "ostoaleonardo",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.3.1",
