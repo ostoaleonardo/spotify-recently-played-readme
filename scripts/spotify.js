@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const {
     SPOTIFY_CLIENT_ID,
     SPOTIFY_SECRET_ID,

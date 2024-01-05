@@ -8,26 +8,31 @@ getRecentlyPlayed().then((track) => {
   return track;
 });
 
+const getBase64FromUrl = async (url) => {
+  const arrayBuffer = await fetch(url).then((res) => res.arrayBuffer());
+  const base64 = Buffer.from(arrayBuffer).toString('base64');
+  const dataUrl = `url(data:image/jpeg;base64,${base64})`;
+  return dataUrl;
+};
+
 app.get('/api', async (req, res) => {
   try {
-    const recentlyPlayed = await getRecentlyPlayed();
 
     let urlTrack = '#';
     let imageUrl = '';
     let titleTrack = '';
     let artistTrack = '';
 
-    const getInfoTrack = () => {
+    const recentlyPlayed = await getRecentlyPlayed()
+
+    if (recentlyPlayed) {
       const { title, artist, image, url } = recentlyPlayed;
+      const dataUrl = await getBase64FromUrl(image);
 
       titleTrack = title;
       artistTrack = artist;
-      imageUrl = image;
+      imageUrl = dataUrl;
       urlTrack = url;
-    };
-
-    if (recentlyPlayed) {
-      getInfoTrack();
     }
 
     res.setHeader('Content-Type', 'image/svg+xml');
@@ -54,7 +59,7 @@ app.get('/api', async (req, res) => {
                 height: 100%;
                 aspect-ratio: 1/1;
                 background-size: cover;
-                background-image: url(${imageUrl});
+                background-image: ${imageUrl};
               }
 
               .card-body {
