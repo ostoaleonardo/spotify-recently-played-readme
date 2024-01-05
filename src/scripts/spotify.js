@@ -70,6 +70,4 @@ const formatRecentlySong = (song) => {
     };
 };
 
-module.exports = {
-    getRecentlyPlayed,
-};
+module.exports = { getRecentlyPlayed };
